@@ -1,6 +1,6 @@
 # APS M&E Data Model Explorer
 
-The sample is using this [GraphiQL project](https://github.com/graphql/graphiql) that makes it really easy to discover the Flow Data API through GraphQL.
+The sample is using this [GraphiQL project](https://github.com/graphql/graphiql) that makes it really easy to discover the M&E Data Model API through GraphQL.
 
 # Thumbnail
 
@@ -49,11 +49,6 @@ You can also see the schema in a nice way using [GraphQL Voyager](https://graphq
 
 ![Docs](./readme/voyager.png)
 
-## Troubleshooting
-
-1. **Cannot load viewer**: Make sure you're logged in and using a valid exchange Id.
-
-2. **Filter Extension doesn't highlight elements**: Make sure you're using the exchange urn compatible with the exchange id used in the queries.
 
 ## Written and updated by
 
