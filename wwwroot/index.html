@@ -226,16 +226,15 @@ query GetProjectUsers($input: UsersByProjectIdInput!) {
             case 'Step 4':
                 tab.title = 'GetAssets';
                 tab.query = `# Step 4 – List assets in a project
-query GetAssets($input: FindAssetsInput!) {
-  assets(input: $input) {
-    ... on AssetsResponse {
-      data {
-        id
+query GetAssets($input: AssetsByProjectIdInput!) {
+  assetsByProjectId(input: $input) {
+    assets{
+      id
+      name
+      description
+    	assetTypeIds
+      components{
         name
-      }
-      pagination {
-        cursor
-        pageSize
       }
     }
   }
@@ -245,11 +244,11 @@ query GetAssets($input: FindAssetsInput!) {
                 tab.variables = `{
   "input": {
     "projectId": "",
-    "pagination": {
-      "cursor": "",
-      "limit": 10
+    "sort": {
+      "field": "created.date",
+      "order": "DESC"
+      }
     }
-  }
 }`;
                 break;
             case 'Step 5':
