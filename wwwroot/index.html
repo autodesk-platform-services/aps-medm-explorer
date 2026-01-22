@@ -177,14 +177,16 @@ query GetCollections($input: CollectionsInput!) {
             case 'Step 2':
                 tab.title = 'GetProjects';
                 tab.query = `# Step 2 – List the projects in the collection
-query GetProjects($input: GetProjectsInput!) {
-  projects(input: $input) {
-    ... on ProjectsResponse {
-      data {
-        description
-        id
+query GetProjects($input: ProjectsByCollectionIdInput!) {
+  projectsByCollectionId(input: $input) {
+    projects{
+      name
+      description
+      components{
         name
       }
+      state
+      hasChildren
     }
   }
 }`;
