@@ -87,7 +87,7 @@
         ].map(ensureTutorialTab);
 
         if (!!tabState) {
-            let nonTutorialTabs = tabState.tabs.filter(tab => !tab.query.match(/Step 1 – List all the collections you have access to|Step 2 – List the projects in the collection|Step 3 – Get project metadata|Step 4 – List assets in a project|Step 5 – Get details about a specific asset|Step 6 – Get Binary Component Urls|Step 7 – Fetch Binary Component/g))
+            let nonTutorialTabs = tabState.tabs.filter(tab => !tab.query.match(/Step 1 – List all the collections you have access to|Step 2 – List the projects in the collection|Step 3 – Get Project Users|Step 4 – List assets in a project|Step 5 – Get details about a specific asset|Step 6 – Get Binary Component Urls|Step 7 – Fetch Binary Component/g))
             tabState.tabs = tutorialTabs.concat(nonTutorialTabs);
         } else {
             tabState = {
@@ -180,6 +180,7 @@ query GetCollections($input: CollectionsInput!) {
 query GetProjects($input: ProjectsByCollectionIdInput!) {
   projectsByCollectionId(input: $input) {
     projects{
+      id
       name
       description
       components{
@@ -199,22 +200,27 @@ query GetProjects($input: ProjectsByCollectionIdInput!) {
 
                 break;
             case 'Step 3':
-                tab.title = 'GetProjectDetails';
-                tab.query = `# Step 3 – Get project metadata
-query GetProjectDetails($projectId: ID!) {
-  project(id: $projectId) {
-    ... on Project {
-      name
-      description
-      components {
-        data
+                tab.title = 'GetProjectUsers';
+                tab.query = `# Step 3 – Get users of of the project
+query GetProjectUsers($input: UsersByProjectIdInput!) {
+  usersByProjectId(input: $input) {
+    users{
+      firstName
+      lastName
+      roles{
+        roleName
       }
+      accessLevel
+      status
+      lastModifiedOn
     }
   }
 }`;
 
                 tab.variables = `{
-  "projectId":""
+  "input": {
+    "projectId": ""
+  }
 }`;
                 break;
             case 'Step 4':
