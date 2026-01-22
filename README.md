@@ -1,6 +1,6 @@
 # APS M&E Data Model Explorer
 
-The sample is using this [GraphiQL project](https://github.com/graphql/graphiql) that makes it really easy to discover the M&E Data Model API through GraphQL calls.
+The sample is using this [GraphiQL project](https://github.com/graphql/graphiql) that makes it really easy to discover the M&E Data Model API through GraphQL.
 
 # Thumbnail
 
