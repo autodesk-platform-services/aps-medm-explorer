@@ -254,29 +254,18 @@ query GetAssets($input: AssetsByProjectIdInput!) {
             case 'Step 5':
                 tab.title = 'GetAssetDetails';
                 tab.query = `# Step 5 – Get details about a specific asset
-query GetAssetDetails($input: GetAssetInput) {
-  asset(input: $input) {
-    ... on Asset {
-      description
+# Step 5 – Get details about a specific asset
+query GetAssetDetails($input: AssetsByIdsInput!) {
+  assetsByIds(input: $input) {
+    assets{
       id
       name
-      path {
-        ... on AssetPathResponse {
-          data {
-            ... on Project {
-              description
-              name
-            }
-          }
-        }
-      }
-      revisionId
-      version
-      components {
-        name
+      description
+      components{
         typeId
-        typeName
+        name
         data
+        parentTypeIds
       }
     }
   }
@@ -284,7 +273,9 @@ query GetAssetDetails($input: GetAssetInput) {
 `;
                 tab.variables = `{
   "input": {
-    "id": ""
+    "ids": [
+      ""
+    ]
   }
 }`;
                 break;
