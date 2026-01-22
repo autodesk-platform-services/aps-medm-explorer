@@ -254,7 +254,6 @@ query GetAssets($input: AssetsByProjectIdInput!) {
             case 'Step 5':
                 tab.title = 'GetAssetDetails';
                 tab.query = `# Step 5 – Get details about a specific asset
-# Step 5 – Get details about a specific asset
 query GetAssetDetails($input: AssetsByIdsInput!) {
   assetsByIds(input: $input) {
     assets{
@@ -266,6 +265,29 @@ query GetAssetDetails($input: AssetsByIdsInput!) {
         name
         data
         parentTypeIds
+      }
+      numberedVersionId
+      versionNumber
+      revisionNumber
+      revisionId
+      parentId
+      projectId
+      deletionState
+      assetTypeIds
+      hasChildren
+      created{
+        userId
+        serviceId
+        date
+        user{
+          firstName
+          lastName
+          email
+        }
+      }
+      modified {
+        userId
+        serviceId
       }
     }
   }
